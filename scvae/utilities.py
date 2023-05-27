@@ -199,7 +199,10 @@ def remove_empty_directories(source_directory):
 
 
 def download_file(url, path):
-    urllib.request.urlretrieve(url, path, _download_report_hook)
+    #urllib.request.urlretrieve(url, path, _download_report_hook)
+    opener = urllib.request.URLopener()
+    opener.addheader('User-Agent': "Mozilla/5.0")
+    opener.retrieve(url, path, _download_report_hook)
 
 
 def _download_report_hook(block_num, block_size, total_size):
