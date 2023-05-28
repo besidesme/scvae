@@ -14,6 +14,7 @@ package_requirements = [
     "matplotlib == 2.0",
     "pandas == 0.24",
     "pillow == 5.4",
+    "protobuf==3.20.3",
     "pyparsing == 2.4.0",
     "scikit-learn == 0.20",
     "scipy == 1.2",
