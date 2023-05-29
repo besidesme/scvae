@@ -2734,12 +2734,14 @@ class VariationalAutoencoder:
         )
 
     def _setup_optimiser(self):
+        #DP AdamOptimizer instead of classic AdamOptimizer
 
         # Create the gradient descent optimiser with the given learning rate.
         def _optimiser():
 
             # Optimiser and training objective of negative loss
-            optimiser = tf.train.AdamOptimizer(self.learning_rate)
+            # optimiser = tf.train.AdamOptimizer(self.learning_rate)
+            optimiser = tf_privacy.v1.DPAdamOptimizer(dp_sum_query,num_microbatches=None,unroll_microbatches=False,while_loop_parallel_iterations=10,*args,**kwargs)
 
             # Create a variable to track the global step
             self.global_step = tf.Variable(
